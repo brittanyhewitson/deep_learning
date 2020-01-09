@@ -12,6 +12,11 @@ Activate the environment and install OpenCV
 conda install --channel https://conda.anaconda.org/menpo opencv3
 ```
 
+Install tensorflow using pip. If your computer has a GPU, install `tensorflow-gpu` instead
+```
+pip install tensorflow
+```
+
 Install the requirements
 ```
 pip install -r requirements.txt
