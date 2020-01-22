@@ -53,24 +53,16 @@ def polyfit(x, y):
         plt.plot(x, y_new, label="fitted polynomial")
         plt.legend(loc="upper right")
         plt.title("Polyfit Results for k={}".format(i))
-        plt.savefig("polyfit_{}.png".format(i))
+        #plt.savefig("polyfit_{}.png".format(i))
         #plt.show()
         plt.clf()
-
-        if r_squared > best_fit["r_squared"] + 0.001:
-            best_fit["k"] = i
-            best_fit["r_squared"] = r_squared
-            best_fit["coefs"] = coefs
         
     plt.plot(np.linspace(0, 10, 11), r_squares)
     plt.title("$R^2$ Value for Each Value of k (Polyfit)")
     plt.xlabel("Value of k")
     plt.ylabel("$R^2$")
-    plt.savefig("polyfit_r2.png")
+    #plt.savefig("polyfit_r2.png")
     plt.show()
-
-    print("The best fit is {}".format(best_fit))
-    return best_fit
 
 
 def linear_regression(x, y):
@@ -130,20 +122,20 @@ def linear_regression(x, y):
     plt.plot(np.linspace(0, 10, num=11), RMSE)
     plt.title("Root mean squared error for SGD")
     plt.xlabel("Value of k")
-    plt.savefig("sgd_rmse.png")
+    #plt.savefig("sgd_rmse.png")
     plt.show()
     plt.clf()
     plt.plot(np.linspace(0, 10, num=11), test_score)
     plt.title("Test score for SGD")
     plt.xlabel("Value of k")
-    plt.savefig("sgd_test_score.png")
+    #plt.savefig("sgd_test_score.png")
     plt.show()
     plt.clf()
     plt.ylim(top=1, bottom=0)
     plt.plot(np.linspace(0, 10, num=11), r_squares)
     plt.title("$R^2$ Value for SGD")
     plt.xlabel("Value of k")
-    plt.savefig("sgd_r2.png")
+    #plt.savefig("sgd_r2.png")
     plt.show()
     plt.clf()
 
@@ -216,14 +208,9 @@ def gradient_descent(x, y):
         plt.plot(x, y_new, label="fitted polynomial")
         plt.legend(loc="upper right")
         plt.title("Gradient Descent Results for k={}".format(i))
-        plt.savefig("grad_descent_{}.png".format(i))
+        #plt.savefig("grad_descent_{}.png".format(i))
         #plt.show()
         plt.clf()
-
-        if (r_squared > best_fit["r_squared"] + 0.001) and (r_squared <= 1):
-            best_fit["k"] = i
-            best_fit["r_squared"] = r_squared
-            best_fit["coefs"] = a
 
     # Plot the R^2 graph
     plt.ylim(top=1, bottom=0)
@@ -231,12 +218,8 @@ def gradient_descent(x, y):
     plt.title("$R^2$ Value for Each Value of k (Gradient Descent)")
     plt.xlabel("Value of k")
     plt.ylabel("$R^2$")
-    plt.savefig("gradient_descent_r2.png")
+    #plt.savefig("gradient_descent_r2.png")
     plt.show()
-
-    print("The best fit is {}".format(best_fit))
-    return best_fit
-
 
 
 if __name__=='__main__':
@@ -248,10 +231,10 @@ if __name__=='__main__':
     # now x and y contain the data values from a polynomial
 
     # Use NumPy's polyfit function to determine k
-    best_fit = polyfit(x, y)
+    polyfit(x, y)
 
     # Use my Gradient Descent implementation to determine k
-    best_fit = gradient_descent(x, y)
+    gradient_descent(x, y)
 
     # Use SciKit-Learn's SGD regression in a pipeline to determine k
     linear_regression(x, y)
