@@ -22,11 +22,9 @@ def polyfit(x, y):
         x:  input x data
         y:  input y data
     RETURNS 
-        best_fit:   a dictionary containing the degree and R^2 value of the degree 
-                    with the best fit to the input data
+        nothing
     """
     # Find the value of k between 0 and 10
-    best_fit = {"k": None, "r_squared": -np.inf, "coefs": None}
     r_squares = []
     for i in range(MIN_DEGREE, MAX_DEGREE + 1):
         # Use polyfit to determine the coefficients for this order
@@ -54,6 +52,8 @@ def polyfit(x, y):
         plt.legend(loc="upper right")
         plt.title("Polyfit Results for k={}".format(i))
         #plt.savefig("polyfit_{}.png".format(i))
+        # Uncomment the following line to view the fitted 
+        # polynomial for each value of k
         #plt.show()
         plt.clf()
         
@@ -82,7 +82,7 @@ def linear_regression(x, y):
     RMSE = []
     test_score = []
     r_squares = []
-    test_set_fraction=0.2
+    test_set_fraction = 0.2
 
     # Reshape the data to have one column and n rows
     x = x.reshape(-1, 1)
@@ -142,7 +142,9 @@ def linear_regression(x, y):
 
 def gradient_descent(x, y):
     """
-    Implement gradient descent with a learning rate. 
+    Adapted from the code provided in lecture
+
+    Implements gradient descent with a learning rate. 
 
     Args:
         x:  input x data
@@ -157,7 +159,6 @@ def gradient_descent(x, y):
     learning_rate = 0.001
     max_epochs = 20000
     r_squares = []
-    best_fit = {"k": None, "r_squared": -np.inf, "coefs": None}
     y = np.longdouble(y)
     for i in range(MIN_DEGREE, MAX_DEGREE + 1):
         # Decrease the learning rate as the order of the polynomial increases
@@ -209,6 +210,8 @@ def gradient_descent(x, y):
         plt.legend(loc="upper right")
         plt.title("Gradient Descent Results for k={}".format(i))
         #plt.savefig("grad_descent_{}.png".format(i))
+        # Uncomment the following line to view the fitted 
+        # polynomial for each value of k
         #plt.show()
         plt.clf()
 
