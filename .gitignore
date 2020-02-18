@@ -2,3 +2,5 @@ output.txt
 *.pdf
 *.docx
 old/
+__pycache__
+*.csv
